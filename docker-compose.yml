@@ -1,0 +1,42 @@
+version: "3.4"
+services:
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    volumes:
+      - .:/home/elixir/backend
+    ports:
+      - "4000:4000"
+    dns:
+      - 1.1.1.1
+    links:
+      - db
+   
+
+  db:
+    container_name: db
+    image: postgres:10.16-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  s3:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+    volumes:
+      - ".:/home/elixir/backend"
+    environment:
+      MINIO_ACCESS_KEY: "minioadmin"
+      MINIO_SECRET_KEY: "minioadmin"
+    command: server /data
+
+volumes:
+  db_data:
+    external: true
+    name: file_db_data

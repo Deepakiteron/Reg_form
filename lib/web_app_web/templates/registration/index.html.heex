@@ -1,0 +1,34 @@
+<h1>Listing Registrations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Phone number</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for registration <- @registrations do %>
+    <tr>
+      <td><%= registration.name %></td>
+      <td><%= registration.age %></td>
+      <td><%= registration.email %></td>
+      <td><%= registration.password %></td>
+      <td><%= registration.phone_number %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.registration_path(@conn, :show, registration) %></span>
+        <span><%= link "Edit", to: Routes.registration_path(@conn, :edit, registration) %></span>
+        <span><%= link "Delete", to: Routes.registration_path(@conn, :delete, registration), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Registration", to: Routes.registration_path(@conn, :new) %></span>
