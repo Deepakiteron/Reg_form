@@ -3,6 +3,8 @@ defmodule WebAppWeb.RegistrationController do
 
   alias WebApp.Registrations
   alias WebApp.Registrations.Registration
+  alias WebApp.Mail
+  alias WebApp.Mailer
 
   def index(conn, _params) do
     registrations = Registrations.list_registrations()
@@ -17,6 +19,7 @@ defmodule WebAppWeb.RegistrationController do
   def create(conn, %{"registration" => registration_params}) do
      case Registrations.create_registration(registration_params) do
       {:ok, registration} ->
+        Mail.welcome(registration) |>Mailer.deliver()
         conn
         |> put_flash(:info, "Registration created successfully.")
         |> redirect(to: Routes.page_path(conn, :index))

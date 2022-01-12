@@ -29,6 +29,11 @@ config :web_app, WebApp.Mailer, adapter: Swoosh.Adapters.Local
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 
+
+config :web_app, WebApp.Auth.Guardian,
+  issuer: "web_app",
+  secret_key: "YesCMk/NJ6t2pWfs+QzYV5mngHjsI+8n+MV71QTh0JYJKF/Hhvqhr4Hw47K5TNpu"
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.12.18",

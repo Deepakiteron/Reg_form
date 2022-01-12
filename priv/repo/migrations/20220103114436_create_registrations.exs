@@ -11,5 +11,8 @@ defmodule WebApp.Repo.Migrations.CreateRegistrations do
 
       timestamps()
     end
+
+    create unique_index(:registrations, [:email])
+
   end
 end

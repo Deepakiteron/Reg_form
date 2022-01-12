@@ -33,6 +33,7 @@ config :web_app, WebAppWeb.Endpoint,
   host: "127.0.0.1",
   bucket: "minio-local"
 
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
@@ -77,3 +78,8 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+
+config :web_app, WebApp.Auth.Guardian,
+  issuer: "web_app",
+  secret_key: "YesCMk/NJ6t2pWfs+QzYV5mngHjsI+8n+MV71QTh0JYJKF/Hhvqhr4Hw47K5TNpu"

@@ -1,4 +1,4 @@
-defmodule WebApp.Repo.Migrations.CreateRegistrations do
+defmodule WebApp.Repo.Migrations.AddImageToRegistrations do
   use Ecto.Migration
   def change do
     alter table("registrations") do

@@ -1,5 +1,6 @@
  <section class="row">
   <article class="column">
-     <span><%= link "New Registration", to: Routes.registration_path(@conn, :new) %></span>
+     <span><%= link "New Registration", to: Routes.registration_path(@conn, :new) %></span><br>
+      <span><%= link "Log in", to: Routes.session_path(@conn, :index) %></span>
   </article>
 </section>

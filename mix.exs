@@ -54,7 +54,10 @@ defmodule WebApp.MixProject do
       {:sweet_xml, "~> 0.6"},
       {:xml_builder, "~> 2.0.0", override: true},
       {:storage, "~> 0.2.0"},
-      {:uuid, "~> 1.1"}
+      {:uuid, "~> 1.1"},
+      {:guardian, "~> 1.0-beta"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 0.12"}
     ]
   end
 
